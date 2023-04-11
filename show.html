@@ -17,7 +17,7 @@
                 xhr.onload = ()=> {
                     document.getElementById("debugging").innerHTML = xhr.responseText;
                     var maxnum = parseInt(xhr.responseText);
-                    var randomnum = (Math.random()*maxnum)+1;
+                    var randomnum = Math.floor((Math.random()*maxnum)+1);
                     document.getElementById("show").src = "res/" + randomnum.toString() + ".mp4";
                     setTimeout(() => ref(), 10000);
                 };
