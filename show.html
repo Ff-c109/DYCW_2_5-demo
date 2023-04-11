@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> APM Demo </title>
+    </head>
+    <body>
+        <video controls="on" muted="on" loop="loop" autoplay="autoplay" id="show"></video>
+        <p id="debugging"></p>
+        <script>
+            document.getElementById("show").src = "res/1.mp4";
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            document.getElementById("show").style.width = width;
+            function ref() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "num.txt", true);
+                xhr.onload = ()=> {
+                    document.getElementById("debugging").innerHTML = xhr.responseText;
+                    var maxnum = parseInt(xhr.responseText);
+                    var randomnum = (Math.random()*maxnum)+1;
+                    document.getElementById("show").src = "res/" + randomnum.toString() + ".mp4";
+                    setTimeout(() => ref(), 10000);
+                };
+                xhr.send(null);
+                /*var maxnum = 32;
+                var randomnum = Math.floor((Math.random()*maxnum)+1);
+                document.getElementById("show").src = "res/" + randomnum.toString() + ".mp4";
+                setTimeout(() => ref(), 10000);*/
+            }
+            ref();
+        </script>
+    </body>
+</html>
