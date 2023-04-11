@@ -5,27 +5,47 @@
     </head>
     <body>
         <video controls="on" muted="on" loop="loop" autoplay="autoplay" id="show"></video>
+        <img id="show_img" />
         <p id="debugging"></p>
         <script>
             document.getElementById("show").src = "res/1.mp4";
+            document.getElementById("show_img").style.display = "none";
             var width = window.innerWidth;
             var height = window.innerHeight;
             document.getElementById("show").style.width = width;
+            document.getElementById("show_img").style.width = width;
             function ref() {
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", "num.txt", true);
-                xhr.onload = ()=> {
-                    document.getElementById("debugging").innerHTML = xhr.responseText;
-                    var maxnum = parseInt(xhr.responseText);
+                var decide = (Math.random() >= 0.5 ? true : false);
+                if(decide) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "num.txt", true);
+                    xhr.onload = ()=> {
+                        document.getElementById("debugging").innerHTML = xhr.responseText;
+                        var maxnum = parseInt(xhr.responseText);
+                        var randomnum = Math.floor((Math.random()*maxnum)+1);
+                        document.getElementById("show").src = "res/" + randomnum.toString() + ".mp4";
+                        setTimeout(() => ref(), 180000);
+                    };
+                    xhr.send(null);
+                    /*var maxnum = 32;
                     var randomnum = Math.floor((Math.random()*maxnum)+1);
                     document.getElementById("show").src = "res/" + randomnum.toString() + ".mp4";
-                    setTimeout(() => ref(), 180000);
-                };
-                xhr.send(null);
-                /*var maxnum = 32;
-                var randomnum = Math.floor((Math.random()*maxnum)+1);
-                document.getElementById("show").src = "res/" + randomnum.toString() + ".mp4";
-                setTimeout(() => ref(), 10000);*/
+                    setTimeout(() => ref(), 10000);*/
+                }
+                else {
+                    document.getElementById("show_img").style.display = "block";
+                    document.getElementById("show").style.display = "none";
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "num_img.txt", true);
+                    xhr.onload = ()=> {
+                        document.getElementById("debugging").innerHTML = xhr.responseText;
+                        var maxnum = parseInt(xhr.responseText);
+                        var randomnum = Math.floor((Math.random()*maxnum)+1);
+                        document.getElementById("show_img").src = "res/" + randomnum.toString() + ".jpg";
+                        setTimeout(() => ref(), 180000);
+                    };
+                    xhr.send(null);
+                }
             }
             ref();
         </script>
