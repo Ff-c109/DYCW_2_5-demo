@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> APM Demo </title>
+    </head>
+    <body>
+        <h1> Welcome APM </h1>
+        <p id="counter"></p>
+        <script>
+            function count() {
+                var c = parseInt(document.getElementById("counter").innerHTML);
+                c++;
+                document.getElementById("counter").innerHTML = c.toString();
+            }
+        </script>
+        <button onclick="count()">Count</button>
+        <script>
+            document.getElementById("counter").innerHTML = "0";
+        </script>
+    </body>
+</html>
