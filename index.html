@@ -1,22 +1,140 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title> APM Demo </title>
+        <!--<link rel="stylesheet" href="css/index_style.css" type="text/css" />-->
+        <style>
+            div.MesBd {
+                border: 1px solid #000000;
+                display: inline-block;
+                width: 16em;
+                height: 9em;
+                vertical-align: text-top;
+            }
+
+            button.MesBdTitle {
+                border: 0px solid #000000;
+                background-color: #FFFFFF00;
+                font-size: 22px;
+                position: absolute;
+            }
+
+            svg.MesBdImg {
+                position: absolute;
+                left: 105px;
+            }
+        </style>
     </head>
     <body>
         <h1> Welcome APM </h1>
-        <h2> This site is under building...</h2>
+        <div id="MesBd" class="MesBd">
+            <button class="MesBdTitle">留言板</button>
+                <svg class="MesBdImg"
+    width="146"
+    height="146"
+    viewBox="0 0 38.629166 38.629167"
+    version="1.1"
+    id="svg5"
+    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+    sodipodi:docname="MesBd.svg"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:svg="http://www.w3.org/2000/svg">
+    <sodipodi:namedview
+        id="namedview7"
+        pagecolor="#ffffff"
+        bordercolor="#000000"
+        borderopacity="0.25"
+        inkscape:showpageshadow="2"
+        inkscape:pageopacity="0.0"
+        inkscape:pagecheckerboard="0"
+        inkscape:deskcolor="#d1d1d1"
+        inkscape:document-units="mm"
+        showgrid="false"
+        inkscape:zoom="2.061125"
+        inkscape:cx="5.5794772"
+        inkscape:cy="113.28765"
+        inkscape:window-width="1920"
+        inkscape:window-height="1001"
+        inkscape:window-x="-9"
+        inkscape:window-y="-9"
+        inkscape:window-maximized="1"
+        inkscape:current-layer="layer1" />
+    <defs
+        id="defs2" />
+    <g
+        inkscape:label="图层 1"
+        inkscape:groupmode="layer"
+        id="layer1">
+        <rect
+        style="fill:none;stroke:#000000;stroke-width:0.308452;stroke-opacity:1"
+        id="rect61"
+        width="30.379442"
+        height="30.529097"
+        x="4.17488"
+        y="3.0496042"
+        ry="3.7413108" />
+        <path
+        style="fill:none;stroke:#000000;stroke-width:0.323424;stroke-opacity:1"
+        d="m 21.627587,19.055672 8.301903,-8.802875 3.994311,4.008452 -8.145262,8.174099 c -5.46182,0.783643 -4.618708,1.905282 -4.150952,-3.379676 z"
+        id="path794"
+        sodipodi:nodetypes="ccccc" />
+        <path
+        style="fill:none;stroke:#000000;stroke-width:0.308452;stroke-opacity:1"
+        d="m 28.473354,11.721169 4.074077,4.1799"
+        id="path1050" />
+        <path
+        style="fill:none;stroke:#000000;stroke-width:0.308452;stroke-opacity:1"
+        d="m 6.0565158,25.175381 c 0,-2.010584 3.2387987,-4.420977 4.5139572,-4.495803 1.795855,-0.105377 2.3794,4.847372 4.919086,4.847372 2.539686,0 5.930337,-2.357937 5.930337,-2.357937"
+        id="path1778"
+        sodipodi:nodetypes="cssc" />
+    </g>
+    </svg>
+        </div>
+        <script>
+            function closeBt() {
+                document.getElementById("MesBdContent").style.display = "none";
+                document.getElementById("MesBd").style.display = "block";
+                localStorage.setItem('MesBd', document.getElementById("MesContent").value);
+            }
+            function clearBt() {
+                document.getElementById("MesContent").value = " ";
+                localStorage.setItem('MesBd', document.getElementById("MesContent").value);
+            }
+        </script>
+        <div id="MesBdContent" style="display: none;">
+            <textarea id="MesContent"></textarea>
+            <p></p>
+            <button onclick="clearBt()">清除</button>
+            <button onclick="closeBt()">关闭</button>
+        </div>
         <p id="counter"></p>
         <script>
+            document.getElementById("MesBd").onclick = () => {
+                document.getElementById("MesBdContent").style.width = window.innerWidth + "px";
+                document.getElementById("MesBdContent").style.height = window.innerHeight + "px";
+                document.getElementById("MesBdContent").style.display = "block";
+                document.getElementById("MesBd").style.display = "none";
+                document.getElementById("MesContent").style.width = window.innerWidth - "100" + "px";
+                document.getElementById("MesContent").style.height = window.innerHeight - "200" + "px";
+            }
             function count() {
                 var c = parseInt(document.getElementById("counter").innerHTML);
                 c++;
                 document.getElementById("counter").innerHTML = c.toString();
             }
+            function uncount() {
+                document.getElementById("counter").innerHTML = "0";
+                var c = parseInt(document.getElementById("counter").innerHTML);
+            }
         </script>
         <button onclick="count()">Count</button>
+        <button onclick="uncount()">Clear</button>
         <script>
             document.getElementById("counter").innerHTML = "0";
+            //document.getElementById("MesBdContent").innerHTML = localStorage.getItem("MesBd");
         </script>
     </body>
 </html>
