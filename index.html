@@ -25,13 +25,13 @@
                 itemBGd.style.height = "0px";
                 var itemBG = document.createElement("img");
                 itemBG.src = "res/Msg.svg";
-                itemBG.style.width = "42.327999mm";
+                itemBG.style.width = "40.327999mm";
                 itemBG.style.height = "8.4110003mm";
                 var blank = document.createElement("p");
                 itemBGd.appendChild(blank);
                 itemBGd.appendChild(itemBG);
                 item.id="item" + counter++;
-                item.innerText = newmsg.value;
+                item.innerHTML = "<img style=\"width: 1ch\" />" + newmsg.value;
                 msgbd.appendChild(itemBGd);
                 msgbd.appendChild(item);
                 var delbutton = document.createElement("button");
