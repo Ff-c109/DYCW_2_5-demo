@@ -7,16 +7,16 @@
     </head>
     <body>
         <h1 style="position: fixed; left: 33px; top: 15px">留言板</h1>
-        <iframe id="UI" style="position: fixed; top: 0px; left: 0px; z-index: -1;" src="res/UI.svg"></iframe>
+        <iframe id="UI" frameborder="no" style="position: fixed; top: 0px; left: 0px; z-index: -1;" src="res/UI.svg"></iframe>
         <div id="msgbd" style="position: fixed; left: 45px; top: 107px; width: 172px; height: 460px"></div>
         <input id="newmsg" type="text" style="position: fixed; left: 40px; top: 582px; width: 107px; height: 17px; background-color: #00000000; border: none" />
-        <button id="send" style="position: fixed; left: 170px; top: 582px; width: 35px; height: 22px; background-color: #00000000; border: none"></button>
+        <button id="send" style="position: fixed; left: 170px; top: 582px; width: 35px; height: 22px; background: transparent; background-color: #00000000; border: none"></button>
         <script>
             var counter = 0;
             document.getElementById("UI").width = window.innerWidth;
             document.getElementById("UI").height = window.innerHeight;
             var send = document.getElementById("send");
-            send.onclick = () => {
+            send.onclick = function() {
                 var msgbd = document.getElementById("msgbd");
                 var newmsg = document.getElementById("newmsg");
                 var item = document.createElement("a");
@@ -42,8 +42,8 @@
                 //delImg.frameBorder = "no";
                 delbutton.appendChild(delImg);
                 delbutton.style.border = "none";
-                delbutton.style.backgroundColor = "#00000000";
-                delbutton.onclick = () => {
+                delbutton.style.background = "transparent";
+                delbutton.onclick = function() {
                     item.remove();
                     itemBGd.remove();
                 }
