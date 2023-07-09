@@ -6,11 +6,16 @@
         <!--<link rel="stylesheet" href="css/index_style.css" type="text/css" />-->
     </head>
     <body>
-        <h1 style="position: fixed; left: 33px; top: 15px">留言板</h1>
-        <iframe id="UI" frameborder="no" style="position: fixed; top: 0px; left: 0px; z-index: -1;" src="res/UI.svg"></iframe>
-        <div id="msgbd" style="position: fixed; left: 45px; top: 107px; width: 172px; height: 460px"></div>
-        <input id="newmsg" type="text" style="position: fixed; left: 40px; top: 582px; width: 107px; height: 17px; background-color: #00000000; border: none" />
-        <button id="send" style="position: fixed; left: 170px; top: 582px; width: 35px; height: 22px; background: transparent; background-color: #00000000; border: none"></button>
+        <div style="position: absolute; left: 33px; top: 15px"><h1>留言板</h1>
+            <iframe id="UI" src="res/UI.svg" style="position: absolute; top: 0px; left: -32px; z-index: -1;" width="728" height="637" frameborder="no" scrolling="no"></iframe>
+            <div id="msgbd" style="position: absolute; left: 10px; top: 107px; width: 160px; height: 460px; background-color: #0000"></div>
+            <div id="searchBD" style="position: absolute; left: 10px; top: 107px; width: 160px; height: 460px; background-color: #0000; display: none;">
+                <iframe width="500%" height="500%" style="position: absolute; left: -320px; top: -920px; transform: scale(0.2)" src="http://localhost:5000/" frameborder="no" scrolling="yes"></iframe>
+            </div>
+            <input id="newmsg" type="text" style="position: absolute; left: 8px; top: 582px; width: 107px; height: 17px; background-color: #00000000; border: none" />
+            <button id="send" style="position: absolute; left: 138px; top: 582px; width: 35px; height: 22px; background: transparent; background-color: #00000000; border: none"></button>
+            <button id="search" style="position: absolute; left: 52.985008mm; top: 36.444225mm; width: 6mm; height: 6mm; background-color: #0000; border: none"></button>
+        </div>
         <script>
             var counter = 0;
             document.getElementById("UI").width = window.innerWidth;
@@ -28,9 +33,9 @@
                 itemBG.style.width = "40.327999mm";
                 itemBG.style.height = "8.4110003mm";
                 var blank = document.createElement("p");
-                itemBGd.appendChild(blank);
-                itemBGd.appendChild(itemBG);
-                item.id="item" + counter++;
+                //itemBGd.appendChild(blank);
+                //itemBGd.appendChild(itemBG);
+                //item.id="item" + counter++;
                 item.innerHTML = "<img style=\"width: 1ch\" />" + newmsg.value;
                 msgbd.appendChild(itemBGd);
                 msgbd.appendChild(item);
@@ -49,6 +54,27 @@
                 }
                 item.appendChild(delbutton);
                 newmsg.value = "";
+                item.innerHTML += "\n<hr />\n";
+            }
+            var newmsg = document.getElementById("newmsg");
+            newmsg.value = "[AD] 听说右边那个搜索好像可以用了诶！";
+            send.click();
+            newmsg.value = "[AD] 真的吗？真的吗？";
+            send.click();
+            newmsg.value = "[AD] 好耶！";
+            send.click();
+            var searchBD_stat = false;
+            search.onclick = function() {
+                var msgbd = document.getElementById("msgbd");
+                var searchBD = document.getElementById("searchBD");
+                if(searchBD_stat) {
+                    msgbd.style.display = "block";
+                    searchBD.style.display = "none";
+                }
+                else {
+                    searchBD.style.display = "block";
+                    msgbd.style.display = "none";
+                }
             }
         </script>
     </body>
