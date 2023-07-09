@@ -14,7 +14,7 @@
             </div>
             <input id="newmsg" type="text" style="position: absolute; left: 8px; top: 582px; width: 107px; height: 17px; background-color: #00000000; border: none" />
             <button id="send" style="position: absolute; left: 138px; top: 582px; width: 35px; height: 22px; background: transparent; background-color: #00000000; border: none"></button>
-            <button id="search" style="position: absolute; left: 52.985008mm; top: 36.444225mm; width: 6mm; height: 6mm; background-color: #0000; border: none"></button>
+            <button id="search" style="position: absolute; left: 52.985008mm; top: 36.444225mm; width: 6mm; height: 6mm; background: transparent; background-color: #0000; border: none"></button>
         </div>
         <script>
             var counter = 0;
@@ -33,10 +33,16 @@
                 itemBG.style.width = "40.327999mm";
                 itemBG.style.height = "8.4110003mm";
                 var blank = document.createElement("p");
-                //itemBGd.appendChild(blank);
+                itemBGd.appendChild(blank);
                 //itemBGd.appendChild(itemBG);
                 //item.id="item" + counter++;
-                item.innerHTML = "<img style=\"width: 1ch\" />" + newmsg.value;
+                var haslink = false;
+                for(var i = 0; i < newmsg.value.length; i++) {           
+                	if(newmsg.value.substring(i, 2) == "<a") {
+                		haslink = true;
+                	}
+                }
+                item.innerHTML = "<img style=\"width: 1ch\" />" + (haslink ? "不可以发送超链接哦" : newmsg.value);
                 msgbd.appendChild(itemBGd);
                 msgbd.appendChild(item);
                 var delbutton = document.createElement("button");
@@ -45,16 +51,20 @@
                 delImg.width = "20.8";
                 delImg.height = "20.8";
                 //delImg.frameBorder = "no";
+                var spliter = document.createElement("hr");
                 delbutton.appendChild(delImg);
                 delbutton.style.border = "none";
                 delbutton.style.background = "transparent";
                 delbutton.onclick = function() {
                     item.remove();
-                    itemBGd.remove();
+                    //itemBGd.remove();
+                    spliter.remove();
                 }
                 item.appendChild(delbutton);
                 newmsg.value = "";
-                item.innerHTML += "\n<hr />\n";
+                //item.innerHTML += "\n<hr />\n";
+                var spliter = document.createElement("hr");
+                msgbd.appendChild(spliter);
             }
             var newmsg = document.getElementById("newmsg");
             newmsg.value = "[AD] 听说右边那个搜索好像可以用了诶！";
