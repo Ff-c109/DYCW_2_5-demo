@@ -1,0 +1,3 @@
+[submodule "ADBoard_forAPM"]
+	path = ADBoard_forAPM
+	url = git@github.com:Ff-c109/ADBoard_forAPM.git
