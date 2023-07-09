@@ -10,7 +10,7 @@
             <iframe id="UI" src="res/UI.svg" style="position: absolute; top: 0px; left: -32px; z-index: -1;" width="728" height="637" frameborder="no" scrolling="no"></iframe>
             <div id="msgbd" style="position: absolute; left: 10px; top: 107px; width: 160px; height: 460px; background-color: #0000"></div>
             <div id="searchBD" style="position: absolute; left: 10px; top: 107px; width: 160px; height: 460px; background-color: #0000; display: none;">
-                <iframe width="500%" height="500%" style="position: absolute; left: -320px; top: -920px; transform: scale(0.2)" src="http://localhost:5000/" frameborder="no" scrolling="yes"></iframe>
+                <iframe width="500%" height="500%" style="position: absolute; left: -320px; top: -920px; transform: scale(0.2)" src="ADBoard_forAPM/index.html" frameborder="no" scrolling="yes"></iframe>
             </div>
             <input id="newmsg" type="text" style="position: absolute; left: 8px; top: 582px; width: 107px; height: 17px; background-color: #00000000; border: none" />
             <button id="send" style="position: absolute; left: 138px; top: 582px; width: 35px; height: 22px; background: transparent; background-color: #00000000; border: none"></button>
@@ -70,10 +70,12 @@
                 if(searchBD_stat) {
                     msgbd.style.display = "block";
                     searchBD.style.display = "none";
+                    searchBD_stat = false;
                 }
                 else {
                     searchBD.style.display = "block";
                     msgbd.style.display = "none";
+                    searchBD_stat = true;
                 }
             }
         </script>
