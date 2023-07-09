@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title> APM Demo </title>
+        <!--<link rel="stylesheet" href="css/index_style.css" type="text/css" />-->
+    </head>
+    <body>
+        <h1 style="position: fixed; left: 33px; top: 15px">留言板</h1>
+        <iframe id="UI" frameborder="no" style="position: fixed; top: 0px; left: 0px; z-index: -1;" src="res/UI.svg"></iframe>
+        <div id="msgbd" style="position: fixed; left: 45px; top: 107px; width: 172px; height: 460px"></div>
+        <input id="newmsg" type="text" style="position: fixed; left: 40px; top: 582px; width: 107px; height: 17px; background-color: #00000000; border: none" />
+        <button id="send" style="position: fixed; left: 170px; top: 582px; width: 35px; height: 22px; background: transparent; background-color: #00000000; border: none"></button>
+        <script>
+            var counter = 0;
+            document.getElementById("UI").width = window.innerWidth;
+            document.getElementById("UI").height = window.innerHeight;
+            var send = document.getElementById("send");
+            send.onclick = function() {
+                var msgbd = document.getElementById("msgbd");
+                var newmsg = document.getElementById("newmsg");
+                var item = document.createElement("a");
+                var itemBGd = document.createElement("div");
+                itemBGd.style.width = "0px";
+                itemBGd.style.height = "0px";
+                var itemBG = document.createElement("img");
+                itemBG.src = "res/Msg.svg";
+                itemBG.style.width = "40.327999mm";
+                itemBG.style.height = "8.4110003mm";
+                var blank = document.createElement("p");
+                itemBGd.appendChild(blank);
+                itemBGd.appendChild(itemBG);
+                item.id="item" + counter++;
+                item.innerHTML = "<img style=\"width: 1ch\" />" + newmsg.value;
+                msgbd.appendChild(itemBGd);
+                msgbd.appendChild(item);
+                var delbutton = document.createElement("button");
+                var delImg = document.createElement("img");
+                delImg.src = "res/del.svg";
+                delImg.width = "20.8";
+                delImg.height = "20.8";
+                //delImg.frameBorder = "no";
+                delbutton.appendChild(delImg);
+                delbutton.style.border = "none";
+                delbutton.style.background = "transparent";
+                delbutton.onclick = function() {
+                    item.remove();
+                    itemBGd.remove();
+                }
+                item.appendChild(delbutton);
+                newmsg.value = "";
+            }
+        </script>
+    </body>
+</html>

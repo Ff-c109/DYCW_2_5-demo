@@ -1,0 +1,25 @@
+div.MesBd {
+    border: 1px solid #000000;
+    display: inline-block;
+    width: 16em;
+    height: 9em;
+    vertical-align: text-top;
+}
+
+button.MesBdTitle {
+    border: 0px solid #000000;
+    background-color: #FFFFFF00;
+    font-size: 22px;
+    position: absolute;
+}
+
+svg.MesBdImg {
+    position: absolute;
+    left: 105px;
+}
+
+div.comments {
+    border: 1px solid #000000;
+    width: 16rem;
+    height: 22rem;
+}
