@@ -8,7 +8,13 @@
     <body>
         <div style="position: absolute; left: 33px; top: 15px"><h1>留言板</h1>
             <iframe id="UI" src="res/UI.svg" style="position: absolute; top: 0px; left: -32px; z-index: -1;" width="728" height="637" frameborder="no" scrolling="no"></iframe>
-            <div id="msgbd" style="position: absolute; left: 10px; top: 107px; width: 160px; height: 460px; background-color: #0000"></div>
+            <div id="bgdd" style="position: absolute; left: 10px; top: 107px; width: 160px; height: 460px;">
+                        <img id="bgd" style="position: absolute; bottom: 0px" width="100%" />
+			<div style="background-color: #66CCFF00; position:absolute; top: 0px; bottom: 0px; left: 0px; right: 0px;"></div>
+            </div>
+            <div id="msgbd" style="position: absolute; left: 10px; top: 107px; width: 160px; height: 460px; background-color: #0000">
+		<p style="color: #66CCFF">天依，生日快乐</p>
+	    </div>
             <div id="searchBD" style="position: absolute; left: 10px; top: 107px; width: 160px; height: 460px; background-color: #0000; display: none;">
                 <iframe width="500%" height="500%" style="position: absolute; left: -320px; top: -920px; transform: scale(0.2)" src="ADBoard_forAPM/index.html" frameborder="no" scrolling="yes"></iframe>
             </div>
@@ -67,12 +73,12 @@
                 msgbd.appendChild(spliter);
             }
             var newmsg = document.getElementById("newmsg");
-            newmsg.value = "[AD] 听说右边那个搜索好像可以用了诶！";
-            send.click();
-            newmsg.value = "[AD] 真的吗？真的吗？";
-            send.click();
-            newmsg.value = "[AD] 好耶！";
-            send.click();
+            //newmsg.value = "[AD] 听说右边那个搜索好像可以用了诶！";
+            //send.click();
+            //newmsg.value = "[AD] 真的吗？真的吗？";
+            //send.click();
+            //newmsg.value = "[AD] 好耶！";
+            //send.click();
             var searchBD_stat = false;
             search.onclick = function() {
                 var msgbd = document.getElementById("msgbd");
@@ -88,6 +94,13 @@
                     searchBD_stat = true;
                 }
             }
+	    function loadBG() {
+	    var num = Math.floor(Math.random() * 6);
+	    var bgd = document.getElementById("bgd");
+	    bgd.src="/res/luotianyi/" + num + (num >= 2 ? ".jpg" : ".png");
+		    setTimeout(loadBG, 31*1000);
+	    }
+	    loadBG();
         </script>
     </body>
 </html>
