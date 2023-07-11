@@ -1,6 +1,6 @@
 # DYCW_2_5-demo
 
-## 2.1.1
+## 2.1.2
 
 点击前往新版 UI [https://ff-c109.github.io/DYCW_2_5-demo/](https://ff-c109.github.io/DYCW_2_5-demo/)
 
